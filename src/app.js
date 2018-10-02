@@ -5,12 +5,8 @@ const dates = require("../data/dataset.json");
 
 const parsedDates = dates.map(date => moment(date).unix());
 
-console.log(parsedDates[0]);
-
 function getTimeStamp(date) {
-  return moment()
-    .format(date, "YYYYMMDD")
-    .unix();
+  return moment(moment().format(date, "YYYYMMDD")).unix();
 }
 
 function getMidnightStamp() {
@@ -27,7 +23,6 @@ const port = 3000;
 // app.get("/", (req, res) => res.send("Hello World!"));
 
 app.get("/", (req, res) => {
-  console.log("req.params:", req.query);
   const {
     start_date: startDate,
     end_date: endDate,
@@ -55,12 +50,11 @@ app.get("/", (req, res) => {
   } else {
     maxDaysInt = Number.MAX_VALUE;
   }
-  console.log("max days:", maxDaysInt);
 
   const datesRes = parsedDates
     .filter(ts => ts >= startDateTS && ts <= endDateTS)
     .slice(0, maxDaysInt)
-    .map(ts => moment(ts).format("YYYYMMDD"));
+    .map(ts => moment.unix(ts).format("YYYYMMDD"));
 
   res.send(datesRes);
 });
