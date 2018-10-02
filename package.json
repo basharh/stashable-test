@@ -6,11 +6,13 @@
   "author": "Bashar Harfoush <bashar.harfoush@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "moment": "^2.22.2"
   },
   "scripts": {
     "build": "babel src --out-dir build --copy-files",
     "start": "node build/app.js",
+    "start-watch": "NODE_ENV=development nodemon --watch build build/app.js",
     "lint": "eslint src"
   },
   "devDependencies": {
