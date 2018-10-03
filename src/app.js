@@ -69,7 +69,7 @@ app.get(
     if (maxDays !== undefined) {
       maxDaysInt = Number.parseInt(maxDays, 10);
     } else {
-      maxDaysInt = Number.MAX_VALUE;
+      maxDaysInt = 30;
     }
 
     const datesRes = parsedDates
