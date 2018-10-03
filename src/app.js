@@ -8,7 +8,7 @@ const dates = require("../data/dataset.json");
 const parsedDates = dates.map(date => moment(date).unix());
 
 function checkDate(date) {
-  return date.test(/^\d{8}$/);
+  return /^\d{8}$/.test(date);
 }
 
 function getTimeStamp(date) {
@@ -31,10 +31,13 @@ const port = 3000;
 app.get(
   "/",
   [
-    query("start_date").custom(value => checkDate(value)),
-    query("start_date").isEmail()
+    query("start_date", "DDMMYYYY format required")
+      .optional()
+      .custom(value => checkDate(value)),
+    query("end_date", "DDMMYYYY format required")
+      .optional()
+      .custom(value => checkDate(value))
   ],
-
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
