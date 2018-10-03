@@ -19,14 +19,10 @@ function getMidnightStamp() {
   return moment(moment().format("YYYYMMDD")).unix();
 }
 
-// const today_ts = moment(moment().format("YYYYMMDD"));
-
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 
-const port = 3000;
-
-// app.get("/", (req, res) => res.send("Hello World!"));
+const port = process.env.NODE_ENV === "development" ? 3000 : 80;
 
 app.get(
   "/",
@@ -80,5 +76,14 @@ app.get(
     return res.send(datesRes);
   }
 );
+
+// eslint-disable-next-line
+app.use((err, req, res, next) => {
+  console.log("Error occured:", err);
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render("error");
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -917,8 +917,8 @@ camelcase@^4.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
 caniuse-lite@^1.0.30000844:
-  version "1.0.30000888"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000888.tgz#22edb50d91dd70612b5898e3b36f460600c6492f"
+  version "1.0.30000889"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000889.tgz#53e266c83e725ad3bd2e4a3ea76d5031a8aa4c3e"
 
 capture-stack-trace@^1.0.0:
   version "1.0.1"
